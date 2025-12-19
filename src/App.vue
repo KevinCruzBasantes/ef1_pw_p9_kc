@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  <div class="app-container">
+
+    <FormularioComponent @agregar-candidato="agregarCandidato" />
+
+
+    <TablaComponent :candidatos="candidatos" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
+import FormularioComponent from "./components/FormularioComponent.vue";
+import TablaComponent from "./components/TablaComponent.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
-</script>
+    FormularioComponent,
+    TablaComponent
+  },
 
+
+  data() {
+    return {
+      candidatos: []
+    };
+  },
+
+  methods: {
+
+    agregarCandidato(candidato) {
+      this.candidatos.push(candidato);
+    }
+  }
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 40px;
+
+  padding: 40px;
 }
 </style>
